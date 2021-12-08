@@ -1,0 +1,28 @@
+.grid {
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 2fr 5rem;
+    grid-template-areas:
+      "nav-bar events spending"
+      "nav-bar footer footer";
+  }
+
+.nav-bar {
+    grid-area: nav-bar;
+}
+
+.event-panel {
+    grid-area: events;
+}
+
+.spending-bar {
+    grid-area: spending;
+}
+
+footer {
+    grid-area: footer;
+}

@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import "../styles.css";
 import { Auth } from '@supabase/ui'
 import {supabase} from '../utils/supabaseClient'
 

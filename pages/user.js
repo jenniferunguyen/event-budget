@@ -3,14 +3,13 @@ import Link from 'next/link'
 
 export default function User() {
   return (
-    <div className="flex flex-row items-center justify-center min-h-screen py-2">
+    <div>
       <Head>
         <title>Event Budget</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <nav className="flex flex-col items-center justify-center w-full flex-1 px-20 text-left">
-        <div className="nav">
+      <main class="grid">
+        <nav class="nav-bar">
           <h1>Event Budget</h1>
           <Link href="/home" >
             <div>
@@ -37,22 +36,23 @@ export default function User() {
               <p>Log out</p>
             </div>
           </Link>
-        </div>
+        </nav>
+          <div class="event-panel">
+            {/* button for search */}
+            <div class="title">
+              <h2>My Events</h2>
+            </div>
+          </div>
+          <div class="spending-bar">
+            <div class="recent-spending">
+              <h2>Recent Spending</h2>
+            </div>
+            <div class="add-spending">
+              <h2>Add Spending</h2>
+            </div>
+          </div>
+        <footer>TODO: FILL IN FOOTER</footer>
         
-      </nav>
-      <main>
-        {/* button for search */}
-        <div className="gallery">
-          <h2>My Events</h2>
-        </div>
-        <div className="spending-bar">
-          <div className="recent-spending">
-            <h2>Recent Spending</h2>
-          </div>
-          <div className="add-spending">
-            <h2>Add Spending</h2>
-          </div>
-        </div>
       </main>
     </div>
   )
