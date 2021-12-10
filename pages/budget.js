@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {Auth} from '@supabase/ui'
+import { supabase } from '../utils/supabaseClient'
 
-export default function User() {
+export default function Budget() {
   return (
     <div>
       <Head>
@@ -28,27 +30,33 @@ export default function User() {
               <p>Settings</p>
             </div>
           </Link>
-          <Link href="/logout" >
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div>
+              <button onClick={async () => {
+                let { error } = await supabase.auth.signOut()
+                if(error) {console.log(error)} else location.href="/"
+                }}>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-              </svg>
-              <p>Log out</p>
+                </svg>
+                Log out
+              </button>
             </div>
-          </Link>
         </nav>
           <div class="event-panel">
             {/* button for search */}
             <div class="title">
               <h2>My Events</h2>
+                {/* TODO: component EventDisplay */}
             </div>
           </div>
           <div class="spending-bar">
             <div class="recent-spending">
               <h2>Recent Spending</h2>
+              {/* TODO: component SpendingTable with param 5 for number of rows */}
             </div>
             <div class="add-spending">
               <h2>Add Spending</h2>
+              {/* TODO: component AddSpending*/}
             </div>
           </div>
         <footer>TODO: FILL IN FOOTER</footer>
