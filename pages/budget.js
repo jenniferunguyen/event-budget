@@ -2,16 +2,38 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {Auth} from '@supabase/ui'
 import { supabase } from '../utils/supabaseClient'
+import { useUser } from '../context/UserContext'
+import { useState } from 'react'
+import EventCard from '../components/EventCard'
+import { EventContext, useEvents } from '../context/EventContext'
 
 export default function Budget() {
+
+  const { user, setUser } = useUser()
+  const { events, setEvents } = useEvents()
+
+  const [ level, setLevel ] = useState(["",])
+
+  const displayEvents = (e) => {
+    // check if event is in page level
+    if (e.path[-1] == level[-1]){
+      //check color and stacked look
+      //display card
+    }
+  }
+
+
   return (
     <div>
       <Head>
         <title>Event Budget</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=PT+Sans&display=swap" rel="stylesheet"></link>
       </Head>
-      <main class="grid">
-        <nav class="nav-bar">
+      <main class="grid bg-green-100">
+        <nav class="nav-bar bg-white">
           <h1>Event Budget</h1>
           <Link href="/home" >
             <div>
@@ -42,12 +64,15 @@ export default function Budget() {
               </button>
             </div>
         </nav>
-          <div class="event-panel">
-            {/* button for search */}
-            <div class="title">
+        <div class="event-panel">
+          {/* button for search */}
+          --Search bar--
+            <div class="event-display">
               <h2>My Events</h2>
                 {/* TODO: component EventDisplay */}
-            </div>
+                {events.map(e => (
+                  <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={e.spending} color={e.color} hasSubevents={e.hasSubevents}/>))}
+            </div>  
           </div>
           <div class="spending-bar">
             <div class="recent-spending">
@@ -58,9 +83,8 @@ export default function Budget() {
               <h2>Add Spending</h2>
               {/* TODO: component AddSpending*/}
             </div>
-          </div>
+          </div>  
         <footer>TODO: FILL IN FOOTER</footer>
-        
       </main>
     </div>
   )

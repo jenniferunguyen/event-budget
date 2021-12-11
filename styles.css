@@ -1,3 +1,4 @@
+
 .grid {
     margin: 0;
     padding: 0;
@@ -20,6 +21,22 @@
 
 .event-panel {
     grid-area: events;
+    
+}
+
+.event-display {
+    border-radius: 20px 20px 0px 0px;
+    padding: 15px;
+    background-color: white;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 10px;
+    width: 45%;
+    margin: 0px 15px 15px 0px;
+    background-color: lightblue;
+    box-shadow: blue;
 }
 
 .spending-bar {
@@ -29,3 +46,35 @@
 footer {
     grid-area: footer;
 }
+
+.progress {
+    width: 90%; 
+    height: 15px;
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+    
+/* .progress-bar {
+    height: 20px;
+    background-color: green;
+    border-color: black;
+  }     */
+
+/* h1, h2 {
+    font-family: 'Boogaloo', cursive;
+}
+
+p {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.font-Boogaloo {
+    font-family: 'Boogaloo', cursive;
+}
+
+.font-PT-Sans {
+    font-family: 'PT Sans', sans-serif;
+} */
