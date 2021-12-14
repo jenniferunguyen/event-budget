@@ -5,18 +5,20 @@
     gap: 1rem;
     min-height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 2fr 5rem;
+    grid-template-columns: 0.5fr 2fr 1fr;
     grid-template-areas:
-      "nav-bar events spending"
-      "nav-bar footer footer";
+      "nav-bar events side-panel"
   }
 
 .nav-bar {
     grid-area: nav-bar;
+    
+}
+
+.nav-bar-com {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 20px;
 }
 
 .event-panel {
@@ -25,29 +27,50 @@
 }
 
 .event-display {
-    border-radius: 20px 20px 0px 0px;
-    padding: 15px;
+    border-radius: 45px 45px 0px 0px;
+    padding: 20px;
     background-color: white;
+    height: min-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr 4fr;
+    grid-template-areas:
+      "app-name sum-numbers"
+      "progress-total progress-total"
+      "my-events my-events"
+}
+
+.app-name {
+    grid-area: app-name;
+}
+
+.sum-numbers {
+    grid-area: sum-numbers;
+}
+
+.progress-total {
+    grid-area: progress-total;
+}
+
+.my-events {
+    grid-area: my-events;
 }
 
 .card {
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 10px;
     width: 45%;
     margin: 0px 15px 15px 0px;
-    background-color: lightblue;
-    box-shadow: blue;
+    background-color: white;
+    /* border-width: 2px; */
 }
 
 .spending-bar {
-    grid-area: spending;
+    grid-area: side-panel;
 }
 
-footer {
-    grid-area: footer;
-}
 
-.progress {
+.progress, .progress-total {
     width: 90%; 
     height: 15px;
     background-color: white;
@@ -56,12 +79,23 @@ footer {
     border-radius: 5px;
     overflow: hidden;
   }
-    
-/* .progress-bar {
-    height: 20px;
-    background-color: green;
+
+.progress-bar {
+    height: 15px;
+    background: green;
+    border: black;
+}
+
+.event-display .my-events .add-event-button {
+    width: 40%;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    color: black;
+    background-color: lightgray;
     border-color: black;
-  }     */
+    border-width: 1px;
+    border-radius: 10px;
+}
 
 /* h1, h2 {
     font-family: 'Boogaloo', cursive;
