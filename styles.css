@@ -23,7 +23,6 @@
 
 .event-panel {
     grid-area: events;
-    
 }
 
 .event-display {
@@ -69,7 +68,6 @@
     grid-area: side-panel;
 }
 
-
 .progress, .progress-total {
     width: 90%; 
     height: 15px;
@@ -96,6 +94,23 @@
     border-width: 1px;
     border-radius: 10px;
 }
+
+.add-event-form {
+    grid-area: events;
+    border-radius: 45px 45px 0px 0px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: white;
+    height: min-content;
+}
+
+div div .co-events {
+    width: 50%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
 
 /* h1, h2 {
     font-family: 'Boogaloo', cursive;
