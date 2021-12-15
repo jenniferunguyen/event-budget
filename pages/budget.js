@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { EventContext, useEvents } from '../context/EventContext'
 import NavBar from '../components/NavBar'
 import EventDisplay from '../components/EventDisplay'
+import SpendingForm from '../components/SpendingForm'
+import SpendingTable from '../components/SpendingTable'
 
 export default function Budget() {
 
@@ -34,10 +36,12 @@ export default function Budget() {
             <div className="recent-spending">
               <h2>Recent Spending</h2>
               {/* TODO: component SpendingTable with param 5 for number of rows */}
+              <SpendingTable numRow={5}></SpendingTable>
             </div>
             <div className="add-spending">
-              <h2>Add Spending</h2>
-              {/* TODO: component AddSpending*/}
+              <p>Add Spending</p>
+              {/* TODO: component SpendingForm -- look at path */}
+              {/* <SpendingForm></SpendingForm> */}
             </div>
           </div>  
       </main>

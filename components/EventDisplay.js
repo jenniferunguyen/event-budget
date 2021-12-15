@@ -33,7 +33,7 @@ export default function EventDisplay() {
     return (
         <div className="event-display">
             <h2 className="app-name">My Events</h2>
-            {events.filter(f => <FilterByLevel level={f}/>).forEach(e => updateTotals(e))}
+            {events.filter(f => <FilterByLevel item={f}/>).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>
@@ -45,10 +45,9 @@ export default function EventDisplay() {
             <div className="my-events">
                 {/* TODO: button to direct to add event at this level */}
                 <Link href="./addEvent"><button className="add-event-button">Add Event at this Level</button></Link>
-                {events.filter(f => <FilterByLevel level={f}/>).map(e =>
+                {events.filter(f => <FilterByLevel item={f}/>).map(e =>
                     <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={e.spending} color={e.color} hasSubevents={e.hasSubevents}/>)}
             </div>
-            {console.log(events)}
         </div>
     )
 }
