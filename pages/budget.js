@@ -34,14 +34,12 @@ export default function Budget() {
           </div>
           <div className="spending-bar">
             <div className="recent-spending">
-              <h2>Recent Spending</h2>
-              {/* TODO: component SpendingTable with param 5 for number of rows */}
+              <h2>Recently Added Spending</h2>
               <SpendingTable numRow={5}></SpendingTable>
             </div>
             <div className="add-spending">
-              <p>Add Spending</p>
               {/* TODO: component SpendingForm -- look at path */}
-              {/* <SpendingForm></SpendingForm> */}
+              <SpendingForm></SpendingForm>
             </div>
           </div>  
       </main>

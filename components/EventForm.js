@@ -1,6 +1,5 @@
 import { useUser } from '../context/UserContext'
 import { EventContext, useEvents } from '../context/EventContext'
-import Link from 'next/link'
 
 export default function EventForm () {
 
@@ -60,7 +59,7 @@ export default function EventForm () {
             <input type="url" id="mylink" name="mylink"
                 className="m-2 rounded px-1 py-1"></input><br/>
             <button type="submit">Save</button>
-            <Link href="/budget">Cancel</Link>
+            <button type="reset">Cancel</button>
         </form>        
     )
 }

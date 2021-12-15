@@ -19,24 +19,22 @@ function MyApp({ Component, pageProps }) {
   // TODO: delete test data
   const [events, setEvents] = useState([
     {
-      date: "2020-03-12", 
-      path: ["My Events","title 1",], 
-      title: "title 1", 
+      date: "2021-09-01", 
+      path: ["My Events","September",], 
+      title: "September", 
       budget: 100, 
-      spending: 10, 
       color: "blue", 
-      description: "description", 
+      description: "", 
       link: "", 
-      hasSubevents: true
+      hasSubevents: false
     },
     {
       date: "2021-11-01", 
-      path: ["My Events","title 2",], 
-      title: "title 2", 
+      path: ["My Events","November",], 
+      title: "November", 
       budget: 100, 
-      spending: 50, 
       color: "green", 
-      description: "description", 
+      description: "", 
       link: "", 
       hasSubevents: false
     },
@@ -45,39 +43,15 @@ function MyApp({ Component, pageProps }) {
 
   const [spendings, setSpendings] = useState([
     {
-      date: "2021-12-01", 
-      path: ["My Events","title 1",], 
-      title: "title 1",
-      amount: 10
+      date: "2021-09-09", 
+      path: ["My Events","September",], 
+      title: "Dinner with the Parents",
+      amount: 50
     },
     {
       date: "2021-12-02", 
-      path: ["My Events","title 1",], 
-      title: "hehehe",
-      amount: 30
-    },
-    {
-      date: "2021-12-01", 
-      path: ["My Events","title 1",], 
-      title: "blah",
-      amount: 10
-    },
-    {
-      date: "2021-12-01", 
-      path: ["My Events","title 1",], 
-      title: "yaya",
-      amount: 10
-    },
-    {
-      date: "2021-12-01", 
-      path: ["My Events","title 1",], 
-      title: "wink wink",
-      amount: 10
-    },
-    {
-      date: "2021-12-01", 
-      path: ["My Events","title 1",], 
-      title: "howdy",
+      path: ["My Events","November",], 
+      title: "Movie ticket",
       amount: 10
     },
   ])

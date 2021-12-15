@@ -1,12 +1,28 @@
 import Link from 'next/link'
 import { EventContext, useEvents } from '../context/EventContext'
-// import { useUser } from '../context/UserContext'
+import { UserContext } from '../context/UserContext'
+import { useUser } from '../context/UserContext'
 import EventCard from "./EventCard"
 import FilterByLevel from './FilterByLevel'
+import { SpendingContext, useSpendings } from '../context/SpendingContext'
 
 export default function EventDisplay() {
 
+    const { user, setUser } = useUser()
+    // TODO: get name of level
     const { events, setEvents } = useEvents()
+
+    const { spendings, setSpendings } = useSpendings()
+
+    // totals up spending for that level
+    const countSpending = (c) => {
+        return(spendings.filter(f => 
+            {if (JSON.stringify(f.path) === JSON.stringify(c.path)){
+                return true
+            }}
+            ).map(e=>e.amount).reduce((a,b) => a+b, 0))    
+    }
+
 
     // add up spending and budgets to be used in function getLevelProgress
     let levelBudget = 0
@@ -15,10 +31,9 @@ export default function EventDisplay() {
         let current = levelBudget
         current += e.budget 
         levelBudget = current
-        current = levelSpending
-        current += e.spending
-        levelSpending = current
+        levelSpending += countSpending(e)
       }    
+    
 
     // calculate spending to budget ratio for level progress bar
     const getLevelProgress = () => {
@@ -32,7 +47,7 @@ export default function EventDisplay() {
 
     return (
         <div className="event-display">
-            <h2 className="app-name">My Events</h2>
+            <h2 className="app-name">{user.path[0]}</h2>
             {events.filter(f => <FilterByLevel item={f}/>).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
@@ -46,7 +61,7 @@ export default function EventDisplay() {
                 {/* TODO: button to direct to add event at this level */}
                 <Link href="./addEvent"><button className="add-event-button">Add Event at this Level</button></Link>
                 {events.filter(f => <FilterByLevel item={f}/>).map(e =>
-                    <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={e.spending} color={e.color} hasSubevents={e.hasSubevents}/>)}
+                    <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
             </div>
         </div>
     )

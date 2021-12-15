@@ -5,7 +5,7 @@ import FilterByLevel from './FilterByLevel'
 export default function SpendingTable (numRow) {
 
     const { spendings, setSpendings } = useSpendings()
-    let filteredSpending = spendings.filter(f => <FilterByLevel item={f}/>)
+    let filteredSpending = spendings.filter(f => <FilterByLevel item={f}/>).reverse()
     let num = parseInt(numRow.numRow)
     if (num > filteredSpending.length){
         num = filteredSpending.length
