@@ -8,12 +8,11 @@ import { useSpendings } from '../context/SpendingContext'
 export default function DetailDisplay() {
 
     const { user, setUser } = useUser()
-    user.path.push("September")
+    user.path = ["My Events", "September"]
 
     // TODO: get name of level
     const { events, setEvents } = useEvents()
-    let thisEvent = events.filter(f => <FilterByLevel item={f} altPath={false}/>)
-    console.log(thisEvent)
+    let thisEvent = events.filter(f => {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}})[0]
 
     const { spendings, setSpendings } = useSpendings()
 
@@ -21,18 +20,19 @@ export default function DetailDisplay() {
     const countSpending = (c) => {
         return(spendings.filter(f => 
             {if (JSON.stringify(f.path) === JSON.stringify(c.path)){
+                console.log(f.path)
                 return true
             }}
             ).map(e=>e.amount).reduce((a,b) => a+b, 0))    
     }
 
     // add up spending and budgets to be used in function getLevelProgress
-    let levelBudget = 0
-    let levelSpending = 0
+    let levelBudget = thisEvent.budget
+    let levelSpending = countSpending(thisEvent)
     const updateTotals = (e) => {
-        let current = levelBudget
-        current += e.budget 
-        levelBudget = current
+        // let current = levelBudget
+        // current += e.budget 
+        // levelBudget = current
         levelSpending += countSpending(e)
       }    
     
@@ -47,9 +47,9 @@ export default function DetailDisplay() {
     }
 
     return (
-        <div className="event-display bg-white rounded-t-3xl p-5">
+        <div className="event-display bg-white rounded-t-3xl p-5 mt-5">
             <h2 className="app-name">{user.path[user.path.length - 1]}</h2>
-            {events.filter(f => <FilterByLevel item={f} altPath={false}/>).forEach(e => updateTotals(e))}
+            {/* {events.filter(f => <FilterByLevel item={f} altPath={false}/>).forEach(e => updateTotals(e))} */}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>

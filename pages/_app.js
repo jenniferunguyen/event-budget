@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
     {
       date: "2021-09-09", 
       path: ["My Events","September",], 
-      title: "Dinner with the Parents",
+      title: "Fancy dinner",
       amount: 50
     },
     {
