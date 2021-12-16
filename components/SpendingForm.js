@@ -23,6 +23,7 @@ export default function SpendingForm () {
             amount: parseInt(getValue("myamount"))
         }
         spendings.push(newSpending)
+        console.log(spendings)
         e.preventDefault()
         window.alert("Saved")
         document.getElementById("spending-form").reset()
