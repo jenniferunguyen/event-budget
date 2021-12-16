@@ -59,14 +59,17 @@ function MyApp({ Component, pageProps }) {
 
   return (
     // <Auth.UserContextProvider supabaseClient={supabase}>
-    <UserContext.Provider value={userValue}>
-      <EventContext.Provider value={eventsValue}>
-        <SpendingContext.Provider value={spendingsValue}>
-          <Component {...pageProps} />
-        </SpendingContext.Provider>
-      </EventContext.Provider>
-    </UserContext.Provider>
+    // <UserContext.Provider value={userValue}>
+    //   <EventContext.Provider value={eventsValue}>
+    //     <SpendingContext.Provider value={spendingsValue}>
+    //       <Component {...pageProps} />
+    //     </SpendingContext.Provider>
+    //   </EventContext.Provider>
+    // </UserContext.Provider>
     // </Auth.UserContextProvider>
+    <Auth.UserContextProvider supabaseClient={supabase}>
+      <Component {...pageProps} />
+    </Auth.UserContextProvider>
   )
 }
 
