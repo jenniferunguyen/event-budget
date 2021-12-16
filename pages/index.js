@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div class="flex flex-row items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Event Budget</title>
+        <title>Event Budget - Log In</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

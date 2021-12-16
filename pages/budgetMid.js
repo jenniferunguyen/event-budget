@@ -7,7 +7,7 @@ import EventDisplay from '../components/EventDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
 
-export default function Budget() {
+export default function BudgetMid() {
 
   return (
     <div>

@@ -5,11 +5,17 @@ import EventCard from "./EventCard"
 import FilterByLevel from './FilterByLevel'
 import { useSpendings } from '../context/SpendingContext'
 
-export default function EventDisplay() {
+export default function DetailDisplay() {
 
     const { user, setUser } = useUser()
+
+    // TODO: delete
+    // user.path.push("November")
+
     // TODO: get name of level
     const { events, setEvents } = useEvents()
+    let thisEvent = events.filter(f => <FilterByLevel item={f}/>)
+    console.log(thisEvent)
 
     const { spendings, setSpendings } = useSpendings()
 
@@ -43,8 +49,8 @@ export default function EventDisplay() {
     }
 
     return (
-        <div className="event-display bg-white rounded-t-3xl mt-5 p-5">
-            <h2 className="app-name">{user.path[0]}</h2>
+        <div className="event-display bg-white rounded-t-3xl p-5">
+            <h2 className="app-name">{user.path[user.path.length - 1]}</h2>
             {events.filter(f => <FilterByLevel item={f}/>).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
@@ -59,10 +65,8 @@ export default function EventDisplay() {
                     <button  className="mr-4 p-1 bg-gray-200 border-black border rounded-md">Add Event at this Level</button>
                 </Link>
             </div>
-            <div className="my-events">
-                {events.filter(f => <FilterByLevel item={f}/>).map(e =>
-                    <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
-            </div>
+            <p>Description: </p>
+            <p>{thisEvent.description}</p>
         </div>
     )
 }

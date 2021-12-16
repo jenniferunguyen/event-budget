@@ -5,9 +5,11 @@ export default function EventForm () {
 
     const { user, setUser } = useUser()
     const { events, setEvents } = useEvents()
+
     let getValue = (id) => {
         return document.getElementById(id).value
       }
+
     let submitForm = e => {
         let newPath = user.path
         newPath.push(getValue("mytitle"))
@@ -23,13 +25,13 @@ export default function EventForm () {
             hasSubevents: false
           }
         events.push(newEvent)
-        // e.preventDefault()
+        e.preventDefault()
         window.alert("Saved")
         document.getElementById("event-form").reset()
     }
 
     return (
-        <form onSubmit={submitForm} id="event-form" className="add-event-form">
+        <form onSubmit={submitForm} id="event-form" className="add-event-form mt-5 bg-white rounded-t-3xl p-5">
             <label htmlFor="mydate">Date: </label>
             <input placeholder="MM/DD/YY" type="date" id="mydate" name="mydate"
                 className="m-2 rounded px-1 py-1"></input><br/>
@@ -42,24 +44,23 @@ export default function EventForm () {
             <label htmlFor="mycolor">Color: </label>
             {/* TODO: edit color options */}
             <select name="mycolor" id="mycolor" className="m-2 rounded px-1 py-1">
-                <option value="gray">gray (default)</option>
-                <option value="red">red</option>
-                <option value="orange">orange</option>
-                <option value="yellow">yellow</option>
-                <option value="green">green</option>
-                <option value="blue">blue</option>
-                <option value="purple">purple</option>
-                <option value="pink">pink</option>
+                <option value="#a0c4ff">dark blue (default)</option>
+                <option value="#ffadad">red</option>
+                <option value="#ffd6a5">orange</option>
+                <option value="#fdffb6">yellow</option>
+                <option value="#caffbf">green</option>
+                <option value="#9bf6ff">blue</option>
+                <option value="#bdb2ff">purple</option>
+                <option value="#ffc6ff">pink</option>
             </select><br/>
-            {/* <input type="color" id="mycolor" name="mycolor"></input><br/> */}
             <label htmlFor="mydescription">Description: </label>
             <input type="text" id="mydescription" name="mydescription"
                 className="m-2 rounded px-1 py-1"></input><br/>
             <label htmlFor="mylink">Link: </label>
             <input type="url" id="mylink" name="mylink"
                 className="m-2 rounded px-1 py-1"></input><br/>
-            <button type="submit">Save</button>
-            <button type="reset">Cancel</button>
+            <button type="submit" className="mr-4 p-1 bg-gray-200 border-black border rounded-md">Save</button>
+            <button type="reset" className="mr-4 p-1 bg-gray-200 border-black border rounded-md">Clear</button>
         </form>        
     )
 }

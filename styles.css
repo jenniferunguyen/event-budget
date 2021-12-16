@@ -1,4 +1,22 @@
+/* FONTS */
+h1 {
+    font-family: 'Boogaloo', cursive;
+    font-size: xx-large;
+}
+h2 {
+    font-family: 'Boogaloo', cursive;
+    font-size: x-large;
+}
+h3 {
+    font-family: 'Boogaloo', cursive;
+    font-size: large;
+}
+p, div {
+    font-family: 'PT Sans', sans-serif;
+    font-size: medium;
+}
 
+/* 3 COL GRID */
 .grid {
     margin: 0;
     padding: 0;
@@ -6,16 +24,96 @@
     min-height: 100%;
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      "nav-bar events side-panel"
-  }
-
+      "nav-bar middle-panel side-panel-top"
+      "nav-bar middle-panel side-panel-bottom"
+}
 .nav-bar {
     grid-area: nav-bar;
-    
+}
+.middle-panel {
+    grid-area: middle-panel
+}
+.side-panel-top {
+    grid-area: side-panel-top
+}
+.side-panel-bottom {
+    grid-area: side-panel-bottom
 }
 
-.nav-bar-com {
+/* EVENTDISPLAY GRID */
+.event-display {
+    height: max-content;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0.25fr 0.5fr 4fr;
+    grid-template-areas:
+      "app-name sum-numbers"
+      "progress-total progress-total"
+      "add-event-button add-event-button"
+      "my-events my-events"
+}
+.app-name{
+    grid-area: app-name
+}
+.sum-numbers{
+    grid-area: sum-numbers
+}
+.progress-total{
+    grid-area: progress-total;
+}
+.add-event-button{
+    grid-area: add-event-button
+}
+.my-events{
+    grid-area: my-events
+}
+
+/* FORMS */
+input, select {
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+/* PROGRESS BARS */
+.progress, .progress-total {
+    width: 100%; 
+    height: 15px;
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 15px;
+    background: green;
+    border: black;
+}
+
+/* TABLES */
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    overflow: hidden;
+    width: 90%;
+}
+th {
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+}
+td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+/* .nav-bar-com {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -61,28 +159,15 @@
     width: 45%;
     margin: 0px 15px 15px 0px;
     background-color: white;
-    /* border-width: 2px; */
+    text-align: left;
+    border-width: 2px;
 }
 
 .spending-bar {
     grid-area: side-panel;
 }
 
-.progress, .progress-total {
-    width: 90%; 
-    height: 15px;
-    background-color: white;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 5px;
-    overflow: hidden;
-  }
 
-.progress-bar {
-    height: 15px;
-    background: green;
-    border: black;
-}
 
 .event-display .my-events .add-event-button {
     width: 40%;
@@ -104,21 +189,7 @@
     height: min-content;
 }
 
-table {
-    border-collapse: collapse;
-    border: 1px solid black;
-}
 
-th {
-    background-color: white;
-    border: 1px solid black;
-    padding: 5px;
-}
-
-td {
-    border: 1px solid black;
-    padding: 5px;
-}
 
 .add-spending-form {
     border-radius: 45px 45px 0px 0px;
@@ -133,21 +204,4 @@ div div .co-events {
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
-}
-
-
-/* h1, h2 {
-    font-family: 'Boogaloo', cursive;
-}
-
-p {
-    font-family: 'PT Sans', sans-serif;
-}
-
-.font-Boogaloo {
-    font-family: 'Boogaloo', cursive;
-}
-
-.font-PT-Sans {
-    font-family: 'PT Sans', sans-serif;
 } */

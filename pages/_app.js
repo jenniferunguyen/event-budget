@@ -23,8 +23,8 @@ function MyApp({ Component, pageProps }) {
       path: ["My Events","September",], 
       title: "September", 
       budget: 100, 
-      color: "blue", 
-      description: "", 
+      color: "#9bf6ff", 
+      description: "Here are some notes that I have for September expenses", 
       link: "", 
       hasSubevents: false
     },
@@ -33,8 +33,8 @@ function MyApp({ Component, pageProps }) {
       path: ["My Events","November",], 
       title: "November", 
       budget: 100, 
-      color: "green", 
-      description: "", 
+      color: "#caffbf", 
+      description: "Here are some notes that I have for November expenses", 
       link: "", 
       hasSubevents: false
     },

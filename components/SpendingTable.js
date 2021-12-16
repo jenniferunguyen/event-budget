@@ -20,7 +20,7 @@ export default function SpendingTable (numRow) {
                     <th>Amount</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-gray-200/50">
                 {filteredSpending.slice(0,num).map(e => (
                     <tr>
                         <td>{e.date}</td>

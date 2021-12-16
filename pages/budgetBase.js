@@ -3,11 +3,12 @@ import Link from 'next/link'
 import {Auth} from '@supabase/ui'
 import { supabase } from '../utils/supabaseClient'
 import NavBar from '../components/NavBar'
-import EventDisplay from '../components/EventDisplay'
+import DetailDisplay from '../components/DetailDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
+import { useUser } from '../context/UserContext'
 
-export default function Budget() {
+export default function BudgetBase() {
 
   return (
     <div>
@@ -26,7 +27,7 @@ export default function Budget() {
           {/* TODO: button for search */}
           {/* <div className="search">Search</div> */}
           <div>
-            <EventDisplay></EventDisplay>
+            <DetailDisplay></DetailDisplay>
           </div>    
         </div>
         <div className="side-panel-top">
