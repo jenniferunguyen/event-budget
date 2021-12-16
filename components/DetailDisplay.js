@@ -8,13 +8,11 @@ import { useSpendings } from '../context/SpendingContext'
 export default function DetailDisplay() {
 
     const { user, setUser } = useUser()
-
-    // TODO: delete
-    // user.path.push("November")
+    user.path.push("September")
 
     // TODO: get name of level
     const { events, setEvents } = useEvents()
-    let thisEvent = events.filter(f => <FilterByLevel item={f}/>)
+    let thisEvent = events.filter(f => <FilterByLevel item={f} altPath={false}/>)
     console.log(thisEvent)
 
     const { spendings, setSpendings } = useSpendings()
@@ -51,7 +49,7 @@ export default function DetailDisplay() {
     return (
         <div className="event-display bg-white rounded-t-3xl p-5">
             <h2 className="app-name">{user.path[user.path.length - 1]}</h2>
-            {events.filter(f => <FilterByLevel item={f}/>).forEach(e => updateTotals(e))}
+            {events.filter(f => <FilterByLevel item={f} altPath={false}/>).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>
