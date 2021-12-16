@@ -23,6 +23,7 @@ export default function SpendingForm () {
             amount: parseInt(getValue("myamount"))
         }
         spendings.push(newSpending)
+        e.preventDefault()
         window.alert("Saved")
         document.getElementById("spending-form").reset()
     }
@@ -45,7 +46,7 @@ export default function SpendingForm () {
             <input type="number" id="mybudget" name="mybudget" required={true}></input><br/>
             <div className="flex justify-center">
                 <button type="submit" className="mr-4 p-1 bg-gray-200 border-black border rounded-md">Save</button>
-            <button type="reset" className="p-1 bg-gray-200 border-black border rounded-md">Cancel</button>
+                <button type="reset" className="p-1 bg-gray-200 border-black border rounded-md">Cancel</button>
             </div>
             
         </form>        

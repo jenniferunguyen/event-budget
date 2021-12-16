@@ -46,7 +46,7 @@ export default function SpendingLog () {
                     </tr>
                 ))}
             </tbody>
-        </table>   
+            </table>   
           </div> 
         </main>
       </div>
