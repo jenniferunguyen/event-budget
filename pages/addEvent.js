@@ -27,7 +27,7 @@ export default function AddEvent() {
             <div className="side-panel-top">
                 <h2 className="mt-5">Other Events at this Level</h2>
                 {events.filter(f => <FilterByLevel level={f}/>).map(e=> (
-                    <div className="m-2 rounded-xl p-2 w-4/5" style={{backgroundColor: "light"+e.color.toString()}}>{e.title}</div>
+                    <div className="m-2 rounded-xl p-2 w-4/5 border border-white" style={{backgroundColor: e.color.toString()}}>{e.title}</div>
                 ))}
             </div>
         </main>
