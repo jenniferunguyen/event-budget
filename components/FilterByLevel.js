@@ -3,7 +3,7 @@ import { useUser } from '../context/UserContext'
 export default function FilterByLevel({item}) {
     // only display events that are at the current level
     const { user, setUser } = useUser()
-    user.path = ["My Events", "September"]
+    // user.path = ["My Events", "September"]
 
     let thisPath = item.path.slice(0,-1)
 

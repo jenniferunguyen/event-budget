@@ -12,7 +12,7 @@ import { useUser } from '../context/UserContext'
 export default function BudgetMid() {
 
   const { user, setUser } = useUser()
-  user.path = ["My Events", "September"]
+  user.path = ["My Events", "November"]
 
   return (
     <div>

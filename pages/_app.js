@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       color: "#caffbf", 
       description: "Here are some notes that I have for November", 
       link: "", 
-      hasSubevents: false
+      hasSubevents: true
     },
     // {
     //   date: "2021-11-01", 

@@ -63,7 +63,9 @@ export default function MidDisplay() {
                 <p>Description: <br/>{thisEvent.description}</p>
             </div>
             <div className="my-events">
-                {events.filter(f => {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}}).map(e =>
+                {events.filter(f => 
+                {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}}).filter(f => 
+                    (!f.hasSubevents)).map(e =>
                     <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
             </div>
         </div>
