@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
       title: "September", 
       budget: 100, 
       color: "#9bf6ff", 
-      description: "Here are some notes that I have for September expenses", 
+      description: "Here are some notes that I have for September", 
       link: "", 
       hasSubevents: false
     },
@@ -34,10 +34,20 @@ function MyApp({ Component, pageProps }) {
       title: "November", 
       budget: 100, 
       color: "#caffbf", 
-      description: "Here are some notes that I have for November expenses", 
+      description: "Here are some notes that I have for November", 
       link: "", 
       hasSubevents: false
     },
+    // {
+    //   date: "2021-11-01", 
+    //   path: ["My Events","November","Snow"], 
+    //   title: "Snow", 
+    //   budget: 50, 
+    //   color: "#caffbf", 
+    //   description: "some fake snow", 
+    //   link: "", 
+    //   hasSubevents: false
+    // },
   ])
   const eventsValue = { events, setEvents }
 

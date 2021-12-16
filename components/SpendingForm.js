@@ -9,7 +9,7 @@ export default function SpendingForm () {
     const { events, setEvents } = useEvents()
     const { spendings, setSpendings } = useSpendings()
 
-    let getValue = (id) => {
+    const getValue = (id) => {
         if(typeof window !== "undefined") {
             return document.getElementById(id).value
           }
@@ -23,8 +23,7 @@ export default function SpendingForm () {
             amount: parseInt(getValue("myamount"))
         }
         spendings.push(newSpending)
-        console.log(spendings)
-        e.preventDefault()
+        // e.preventDefault()
         window.alert("Saved")
         document.getElementById("spending-form").reset()
     }
@@ -44,7 +43,7 @@ export default function SpendingForm () {
             <label htmlFor="mytitle" className="text-red-500">*Title: </label>
             <input type="text" id="mytitle" name="mytitle" maxLength="50" required={true}></input><br/>
             <label htmlFor="myamount" className="text-red-500">*Amount: </label>
-            <input type="number" id="mybudget" name="mybudget" required={true}></input><br/>
+            <input type="number" id="myamount" name="myamount" required={true}></input><br/>
             <div className="flex justify-center">
                 <button type="submit" className="mr-4 p-1 bg-gray-200 border-black border rounded-md">Save</button>
                 <button type="reset" className="p-1 bg-gray-200 border-black border rounded-md">Cancel</button>

@@ -6,8 +6,13 @@ import NavBar from '../components/NavBar'
 import EventDisplay from '../components/EventDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
+import MidDisplay from '../components/MidDisplay'
+import { useUser } from '../context/UserContext'
 
 export default function BudgetMid() {
+
+  const { user, setUser } = useUser()
+  user.path = ["My Events", "September"]
 
   return (
     <div>
@@ -26,7 +31,7 @@ export default function BudgetMid() {
           {/* TODO: button for search */}
           {/* <div className="search">Search</div> */}
           <div>
-            <EventDisplay></EventDisplay>
+            <MidDisplay></MidDisplay>
           </div>    
         </div>
         <div className="side-panel-top">

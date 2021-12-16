@@ -7,7 +7,12 @@ import DetailDisplay from '../components/DetailDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
 
+import { useUser } from '../context/UserContext'
+
 export default function BudgetBase() {
+
+  const { user, setUser } = useUser()
+  user.path = ["My Events", "September"]
 
   return (
     <div>

@@ -11,8 +11,6 @@ export default function SpendingTable (numRow) {
         num = filteredSpending.length
     }
 
-    
-
     return (
         <table>
             <thead>
