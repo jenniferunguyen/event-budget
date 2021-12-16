@@ -6,7 +6,6 @@ import NavBar from '../components/NavBar'
 import DetailDisplay from '../components/DetailDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
-import { useUser } from '../context/UserContext'
 
 export default function BudgetBase() {
 

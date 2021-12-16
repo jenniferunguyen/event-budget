@@ -77,6 +77,7 @@ input, select {
     border-color: black;
     border-radius: 5px;
     margin: 5px;
+    padding: 2px
 }
 
 /* PROGRESS BARS */
@@ -112,97 +113,3 @@ td {
     border: 1px solid black;
     padding: 10px;
 }
-
-
-/* .nav-bar-com {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.event-panel {
-    grid-area: events;
-}
-
-.event-display {
-    border-radius: 45px 45px 0px 0px;
-    padding: 20px;
-    background-color: white;
-    height: min-content;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 0.5fr 4fr;
-    grid-template-areas:
-      "app-name sum-numbers"
-      "progress-total progress-total"
-      "my-events my-events"
-}
-
-.app-name {
-    grid-area: app-name;
-}
-
-.sum-numbers {
-    grid-area: sum-numbers;
-}
-
-.progress-total {
-    grid-area: progress-total;
-}
-
-.my-events {
-    grid-area: my-events;
-}
-
-.card {
-    border-radius: 20px;
-    padding: 10px;
-    width: 45%;
-    margin: 0px 15px 15px 0px;
-    background-color: white;
-    text-align: left;
-    border-width: 2px;
-}
-
-.spending-bar {
-    grid-area: side-panel;
-}
-
-
-
-.event-display .my-events .add-event-button {
-    width: 40%;
-    padding: 5px 0;
-    margin-bottom: 5px;
-    color: black;
-    background-color: lightgray;
-    border-color: black;
-    border-width: 1px;
-    border-radius: 10px;
-}
-
-.add-event-form {
-    grid-area: events;
-    border-radius: 45px 45px 0px 0px;
-    padding: 20px;
-    margin-top: 10px;
-    background-color: white;
-    height: min-content;
-}
-
-
-
-.add-spending-form {
-    border-radius: 45px 45px 0px 0px;
-    padding: 20px;
-    margin: 10px;
-    background-color: white;
-    height: max-content;
-}
-
-div div .co-events {
-    width: 50%;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 10px;
-} */

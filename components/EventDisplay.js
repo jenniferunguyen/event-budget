@@ -4,12 +4,16 @@ import { useUser } from '../context/UserContext'
 import EventCard from "./EventCard"
 import FilterByLevel from './FilterByLevel'
 import { useSpendings } from '../context/SpendingContext'
+import { useEffect, useState } from 'react'
+import { supabase } from '../utils/supabaseClient'
+import {Auth} from '@supabase/ui'
 
 export default function EventDisplay() {
 
     const { user, setUser } = useUser()
     // TODO: get name of level
     const { events, setEvents } = useEvents()
+
 
     const { spendings, setSpendings } = useSpendings()
 

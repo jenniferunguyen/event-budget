@@ -7,7 +7,7 @@ import Head from 'next/head';
 export default function AddEvent() {
 
     const { events, setEvents } = useEvents()
-
+      
     return (
         <div>
         <Head>
