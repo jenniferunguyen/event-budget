@@ -1,24 +1,13 @@
 import Link from 'next/link'
-import { useEvents } from '../context/EventContext'
-import { useUser } from '../context/UserContext'
-import EventCard from "./EventCard"
-import FilterByLevel from './FilterByLevel'
-import { useSpendings } from '../context/SpendingContext'
 
-export default function DetailDisplay() {
+export default function DetailDisplay({user, events, spendings}) {
 
-    const { user, setUser } = useUser()
-
-    // TODO: get name of level
-    const { events, setEvents } = useEvents()
-    let thisEvent = events.filter(f => {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}})[0]
-
-    const { spendings, setSpendings } = useSpendings()
+    let thisEvent = events.filter(f => {if(JSON.stringify(f.mypath) === JSON.stringify(user.mypath)){return true}})[0]
 
     // totals up spending for that level
     const countSpending = (c) => {
         return(spendings.filter(f => 
-            {if (JSON.stringify(f.path) === JSON.stringify(c.path)){
+            {if (JSON.stringify(f.mypath) === JSON.stringify(c.mypath)){
                 return true
             }}
             ).map(e=>e.amount).reduce((a,b) => a+b, 0))    
@@ -40,7 +29,7 @@ export default function DetailDisplay() {
 
     return (
         <div className="event-display bg-white rounded-t-3xl p-5 mt-5">
-            <h2 className="app-name">{user.path[user.path.length - 1]}</h2>
+            <h2 className="app-name">{user.mypath[user.mypath.length - 1]}</h2>
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>

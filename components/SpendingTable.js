@@ -1,11 +1,8 @@
-import { SpendingContext, useSpendings } from '../context/SpendingContext'
-import Link from 'next/link'
 import FilterByLevel from './FilterByLevel'
 
-export default function SpendingTable (numRow) {
+export default function SpendingTable (numRow, user, spendings) {
 
-    const { spendings, setSpendings } = useSpendings()
-    let filteredSpending = spendings.filter(f => <FilterByLevel item={f}/>).reverse()
+    let filteredSpending = spendings.filter(f => <FilterByLevel item={f} user={user}/>).reverse()
     let num = parseInt(numRow.numRow)
     if (num > filteredSpending.length){
         num = filteredSpending.length
@@ -23,12 +20,12 @@ export default function SpendingTable (numRow) {
             <tbody className="bg-gray-200/50">
                 {filteredSpending.slice(0,num).map(e => (
                     <tr>
-                        <td>{e.date}</td>
+                        <td>{e.mydate}</td>
                         <td>{e.title}</td>
                         <td>{e.amount}</td>
                     </tr>
                 ))}
             </tbody>
-        </table>     
+        </table>  
     )
 }

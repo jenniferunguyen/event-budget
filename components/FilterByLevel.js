@@ -1,13 +1,9 @@
-import { useUser } from '../context/UserContext'
-
-export default function FilterByLevel({item}) {
+export default function FilterByLevel({item,user}) {
     // only display events that are at the current level
-    const { user, setUser } = useUser()
-    // user.path = ["My Events", "September"]
 
-    let thisPath = item.path.slice(0,-1)
+    let thisPath = item.mypath.slice(0,-1)
 
-    if (JSON.stringify(thisPath) === JSON.stringify(user.path)){
+    if (JSON.stringify(thisPath) === JSON.stringify(user.mypath)){
         return true
     }
     return false

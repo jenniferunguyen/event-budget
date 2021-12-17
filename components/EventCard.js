@@ -1,9 +1,4 @@
-// import { IconBluetooth } from "@supabase/ui";
-// import { getMiddlewareManifest } from "next/dist/client/route-loader";
-import { useUser } from "../context/UserContext";
-import Link from "next/link";
-
-export default function EventCard({ date, title, budget, spending, color, hasSubevents}) {
+export default function EventCard({ user, date, title, budget, spending, color, hasSubevents}) {
 
   // allows event card to be color assigned by user
   let styleCard = {
@@ -23,11 +18,10 @@ export default function EventCard({ date, title, budget, spending, color, hasSub
   }
 
   // redirect user to appropriate detail page
-  const { user, setUser } = useUser()
   let destination = "./budget"
   const redirect = () => {
-    //update user.path with event title
-    user.path.push(title)
+    //update user.mypath with event title
+    user.mypath.push(title) //-------------------------------------------------------------------------------------
     // go to middle level
     if (hasSubevents) {
       destination = "./budgetMid"
@@ -48,7 +42,7 @@ export default function EventCard({ date, title, budget, spending, color, hasSub
   return (
     <button onClick={redirect} className="card w-2/5 rounded-2xl p-3 bg-white mr-3 mb-3 text-left" style={styleCard}>
       <div>
-        <p>{date}</p>
+        <p>{mydate}</p>
         <h3 className="card-title mb-5">{title}</h3>
         <div className="flex flex-row justify-between">
         <p>${budget}</p>

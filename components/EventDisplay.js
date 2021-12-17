@@ -1,26 +1,13 @@
 import Link from 'next/link'
-import { useEvents } from '../context/EventContext'
-import { useUser } from '../context/UserContext'
 import EventCard from "./EventCard"
 import FilterByLevel from './FilterByLevel'
-import { useSpendings } from '../context/SpendingContext'
-import { useEffect, useState } from 'react'
-import { supabase } from '../utils/supabaseClient'
-import {Auth} from '@supabase/ui'
 
-export default function EventDisplay() {
-
-    const { user, setUser } = useUser()
-    // TODO: get name of level
-    const { events, setEvents } = useEvents()
-
-
-    const { spendings, setSpendings } = useSpendings()
+export default function EventDisplay({user, events, spendings}) {
 
     // totals up spending for that level
     const countSpending = (c) => {
         return(spendings.filter(f => 
-            {if (JSON.stringify(f.path) === JSON.stringify(c.path)){
+            {if (JSON.stringify(f.mypath) === JSON.stringify(c.mypath)){
                 return true
             }}
             ).map(e=>e.amount).reduce((a,b) => a+b, 0))    
@@ -48,8 +35,8 @@ export default function EventDisplay() {
 
     return (
         <div className="event-display bg-white rounded-t-3xl mt-5 p-5">
-            <h2 className="app-name">{user.path[0]}</h2>
-            {events.filter(f => <FilterByLevel item={f}/>).forEach(e => updateTotals(e))}
+            <h2 className="app-name">{user.mypath[-1]}</h2>
+            {events.filter(f => (<FilterByLevel item={f} user={user}/>)&&(f.mypath.length==2)).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>
@@ -64,8 +51,8 @@ export default function EventDisplay() {
                 </Link>
             </div>
             <div className="my-events">
-                {events.filter(f => <FilterByLevel item={f}/>).map(e =>
-                    <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
+                {events.filter(f => (<FilterByLevel item={f} user={user}/>)&&(f.mypath.length==2)).map(e =>
+                    <EventCard useEvents key={e.mypath} date={e.mydate} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
             </div>
         </div>
     )

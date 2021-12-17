@@ -1,24 +1,14 @@
 import Link from 'next/link'
-import { useEvents } from '../context/EventContext'
-import { useUser } from '../context/UserContext'
 import EventCard from "./EventCard"
-import FilterByLevel from './FilterByLevel'
-import { useSpendings } from '../context/SpendingContext'
 
-export default function MidDisplay() {
+export default function MidDisplay({user, events, spendings}) {
 
-    const { user, setUser } = useUser()
-
-    // TODO: get name of level
-    const { events, setEvents } = useEvents()
-    let thisEvent = events.filter(f => {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}})[0]
-
-    const { spendings, setSpendings } = useSpendings()
+    let thisEvent = events.filter(f => {if(JSON.stringify(f.mypath) === JSON.stringify(user.mypath)){return true}})[0]
 
     // totals up spending for that level
     const countSpending = (c) => {
         return(spendings.filter(f => 
-            {if (JSON.stringify(f.path) === JSON.stringify(c.path)){
+            {if (JSON.stringify(f.mypath) === JSON.stringify(c.mypath)){
                 return true
             }}
             ).map(e=>e.amount).reduce((a,b) => a+b, 0))    
@@ -46,10 +36,10 @@ export default function MidDisplay() {
 
     return (
         <div className="event-display bg-white rounded-t-3xl mt-5 p-5">
-            <h2 className="app-name">{user.path[user.path.length - 1]}</h2>
-            {events.filter(f => {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}}).forEach(e => updateTotals(e))}
+            <h2 className="app-name">{user.mypath[user.mypath.length - 1]}</h2>
+            {events.filter(f => {if((JSON.stringify(f.mypath.slice(0,thisEvent.mypath.length)) === JSON.stringify(user.mypath))&&(f.mypath.length > user.mypath.length)){return true}}).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
-                <p>Total Budget: ${levelBudget}</p>
+                <p>Total Budget Assigned: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>
                 <p>Total Available: ${levelBudget - levelSpending}</p>
             </div>
@@ -63,10 +53,9 @@ export default function MidDisplay() {
                 <p>Description: <br/>{thisEvent.description}</p>
             </div>
             <div className="my-events">
-                {events.filter(f => 
-                {if(JSON.stringify(f.path) === JSON.stringify(user.path)){return true}}).filter(f => 
+                {events.filter(f => {if((JSON.stringify(f.mypath.slice(0,thisEvent.mypath.length)) === JSON.stringify(user.mypath))&&(f.mypath.length > user.mypath.length)){return true}}).filter(f => 
                     (!f.hasSubevents)).map(e =>
-                    <EventCard useEvents key={e.path} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
+                    <EventCard useEvents key={e.mypath} date={e.date} title={e.title} budget={e.budget} spending={countSpending(e)} color={e.color} hasSubevents={e.hasSubevents}/>)}
             </div>
         </div>
     )

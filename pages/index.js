@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import {Auth} from '@supabase/ui'
 import { supabase } from '../utils/supabaseClient'
 

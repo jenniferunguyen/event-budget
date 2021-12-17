@@ -1,30 +1,24 @@
-import { useUser } from '../context/UserContext'
-import { EventContext, useEvents } from '../context/EventContext'
-
-export default function EventForm () {
-
-    const { user, setUser } = useUser()
-    const { events, setEvents } = useEvents()
+export default function EventForm ({user, events}) {
 
     let getValue = (id) => {
         return document.getElementById(id).value
       }
 
     let submitForm = e => {
-        let newPath = user.path
+        let newPath = user.mypath
         newPath.push(getValue("mytitle"))
         let newEvent = {
-            date: getValue("mydate"), 
-            path: newPath, 
+            mydate: getValue("mydate"), 
+            mypath: newPath, 
             title: getValue("mytitle"), 
             budget: parseInt(getValue("mybudget")), 
             spending: 0, 
             color: getValue("mycolor"), 
             description: getValue("mydescription"), 
-            link: getValue("mylink"), 
+            mylink: getValue("mylink"), 
             hasSubevents: false
           }
-        events.push(newEvent)
+        events.push(newEvent) //-------------------------------------------------------------------
         e.preventDefault()
         window.alert("Saved")
         document.getElementById("event-form").reset()
@@ -42,7 +36,6 @@ export default function EventForm () {
             <input type="number" id="mybudget" name="mybudget" required={true}
                 className="m-2 rounded px-1 py-1"></input><br/>
             <label htmlFor="mycolor">Color: </label>
-            {/* TODO: edit color options */}
             <select name="mycolor" id="mycolor" className="m-2 rounded px-1 py-1">
                 <option value="#a0c4ff">dark blue (default)</option>
                 <option value="#ffadad">red</option>

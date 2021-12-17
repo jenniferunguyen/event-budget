@@ -1,13 +1,7 @@
-import { useUser } from '../context/UserContext'
-import { useSpendings } from '../context/SpendingContext'
-import { useEvents } from '../context/EventContext'
+
 import FilterByLevel from './FilterByLevel'
 
-export default function SpendingForm () {
- 
-    const { user, setUser } = useUser()
-    const { events, setEvents } = useEvents()
-    const { spendings, setSpendings } = useSpendings()
+export default function SpendingForm ({user, events, spendings}) {
 
     const getValue = (id) => {
         if(typeof window !== "undefined") {
@@ -17,13 +11,12 @@ export default function SpendingForm () {
         
     let submitForm = e => {
         let newSpending = {
-            date: getValue("mydate"), 
-            path: getValue("mypath"), 
+            mydate: getValue("mydate"), 
+            mypath: getValue("mypath"), 
             title: getValue("mytitle"), 
             amount: parseInt(getValue("myamount"))
         }
         spendings.push(newSpending)
-        console.log(spendings)
         // e.preventDefault()
         window.alert("Saved")
         document.getElementById("spending-form").reset()
@@ -37,9 +30,9 @@ export default function SpendingForm () {
             <label htmlFor="mypath" className="text-red-500">*Event: </label>
             <select id="mypath" name="mypath">
                 {events.filter(
-                    f => <FilterByLevel item={f}/>).filter(
+                    f => <FilterByLevel item={f} user={user}/>).filter(
                         f => {if(!f.hasSubevents){return true}}).map(
-                            e => <option value={e.path}>{JSON.stringify(e.path)}</option>)}
+                            e => <option value={e.mypath}>{JSON.stringify(e.mypath)}</option>)}
                 </select><br/>
             <label htmlFor="mytitle" className="text-red-500">*Title: </label>
             <input type="text" id="mytitle" name="mytitle" maxLength="50" required={true}></input><br/>

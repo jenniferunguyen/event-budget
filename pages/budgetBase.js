@@ -6,13 +6,62 @@ import NavBar from '../components/NavBar'
 import DetailDisplay from '../components/DetailDisplay'
 import SpendingForm from '../components/SpendingForm'
 import SpendingTable from '../components/SpendingTable'
-
-import { useUser } from '../context/UserContext'
+import { useState, useEffect } from 'react'
 
 export default function BudgetBase() {
 
-  const { user, setUser } = useUser()
-  user.path = ["My Events", "September"]
+  const { user } = Auth.useUser()
+  const [events, setEvents] = useState([])
+  const [spendings, setSpendings] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchEvents()
+    fetchSpendings()
+  }, [loading])
+
+  const fetchEvents = async () => {
+    let { data: events, error } = await supabase
+      .from('events')
+      .select()
+
+    if(!error) {
+      setEvents(events)
+      setLoading(false)
+    } else {
+      // there was an error
+      console.log(error)
+      setLoading(false)
+      setError(error)
+    }
+  }
+
+  const fetchSpendings = async () => {
+    let { data: spendings, error } = await supabase
+      .from('spendings')
+      .select()
+
+    if(!error) {
+      setSpendings(spendings)
+      setLoading(false)
+    } else {
+      // there was an error
+      console.log(error)
+      setLoading(false)
+      setError(error)
+    }
+  }
+
+    /* Application is still fetching data */
+    if (loading) {
+      return <p className="text-green-800">Loading...</p>
+    }
+  
+    /* Something went wrong while fetching data*/
+    if (error) {
+      return <p className="text-green-800">{error}</p>
+    }
 
   return (
     <div>
@@ -25,13 +74,13 @@ export default function BudgetBase() {
       </Head>
       <main className="grid bg-green-100">
         <nav className="nav-bar">
-          <NavBar></NavBar>
+          <NavBar user={user}></NavBar>
         </nav>
         <div className="middle-panel">
           {/* TODO: button for search */}
           {/* <div className="search">Search</div> */}
           <div>
-            <DetailDisplay></DetailDisplay>
+            <DetailDisplay user={user} events={events} spendings={spendings}></DetailDisplay>
           </div>    
         </div>
         <div className="side-panel-top">
@@ -39,10 +88,10 @@ export default function BudgetBase() {
           <div className="m-2 p-1 bg-gray-200 border-black border rounded-md w-1/5 text-center">
             <Link href="/spendingLog">View more</Link>
           </div>
-          <SpendingTable numRow={5}></SpendingTable>
+          <SpendingTable numRow={5} user={user} spendings={spendings}></SpendingTable>
         </div>
         <div className="side-panel-bottom">
-          <SpendingForm></SpendingForm>
+          <SpendingForm user={user} events={events} spendings={spendings}></SpendingForm>
         </div>
       </main>
     </div>
