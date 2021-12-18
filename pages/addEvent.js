@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 export default function AddEvent() {
 
     const { user } = Auth.useUser()
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState([{}])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
   

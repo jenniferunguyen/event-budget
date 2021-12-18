@@ -1,6 +1,6 @@
 import FilterByLevel from './FilterByLevel'
 
-export default function SpendingTable (numRow, user, spendings) {
+export default function SpendingTable ({numRow, user, spendings}) {
 
     let filteredSpending = spendings.filter(f => <FilterByLevel item={f} user={user}/>).reverse()
     let num = parseInt(numRow.numRow)

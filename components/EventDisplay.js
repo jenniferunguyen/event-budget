@@ -35,8 +35,8 @@ export default function EventDisplay({user, events, spendings}) {
 
     return (
         <div className="event-display bg-white rounded-t-3xl mt-5 p-5">
-            <h2 className="app-name">{user.mypath[-1]}</h2>
-            {events.filter(f => (<FilterByLevel item={f} user={user}/>)&&(f.mypath.length==2)).forEach(e => updateTotals(e))}
+            <h2 className="app-name">{user.mypath}</h2>
+            {events.filter(f => (<FilterByLevel item={f} user={user}/>)&&(f.mypath.length===2)).forEach(e => updateTotals(e))}
             <div className="sum-numbers">
                 <p>Total Budget: ${levelBudget}</p>
                 <p>Total Spending: ${levelSpending}</p>

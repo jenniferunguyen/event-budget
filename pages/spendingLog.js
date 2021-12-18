@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 export default function SpendingLog () {
 
   const { user } = Auth.useUser()
-  const [spendings, setSpendings] = useState([])
+  const [spendings, setSpendings] = useState([{}])
 
   useEffect(() => {
     fetchSpendings()

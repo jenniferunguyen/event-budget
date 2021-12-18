@@ -10,16 +10,34 @@ import SpendingTable from '../components/SpendingTable'
 
 export default function Budget() {
 
-  const { user } = Auth.useUser()
-  const [events, setEvents] = useState([])
-  const [spendings, setSpendings] = useState([])
+  const { thisuser } = Auth.useUser()
+  const [user, setUsers] = useState([{}])
+  const [events, setEvents] = useState([{}])
+  const [spendings, setSpendings] = useState([{}])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    fetchUser()
     fetchEvents()
     fetchSpendings()
   }, [loading])
+
+  const fetchUser = async () => {
+    let { data: user, error } = await supabase
+      .from('users')
+      .select()
+
+    if(!error) {
+      setUsers({user})
+      setLoading(false)
+    } else {
+      // there was an error
+      console.log(error)
+      setLoading(false)
+      setError(error)
+    }
+  }
 
   const fetchEvents = async () => {
     let { data: events, error } = await supabase
@@ -27,7 +45,7 @@ export default function Budget() {
       .select()
 
     if(!error) {
-      setEvents(events)
+      setEvents({events})
       setLoading(false)
     } else {
       // there was an error

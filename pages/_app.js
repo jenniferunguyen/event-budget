@@ -10,21 +10,6 @@ import {supabase} from '../utils/supabaseClient'
 
 function MyApp({ Component, pageProps }) {
 
-  // const [user, setUser] = Auth.useUser()
-  // const userValue = {
-  //   user, setUser
-  // }
-
-  // // TODO: delete test data
-  // const [events, setEvents] = await supabase
-  //   .from('events')
-  //   .select()
-  // const eventsValue = { events, setEvents }
-
-  // const [spendings, setSpendings] = useState([
-  // ])
-  // const spendingsValue = { spendings, setSpendings }
-
   return (
     <Auth.UserContextProvider supabaseClient={supabase}>
     {/* <UserContext.Provider value={userValue}> */}

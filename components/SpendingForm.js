@@ -16,7 +16,7 @@ export default function SpendingForm ({user, events, spendings}) {
             title: getValue("mytitle"), 
             amount: parseInt(getValue("myamount"))
         }
-        spendings.push(newSpending)
+        spendings.push(newSpending) //-------------------------------------------------------------------------
         // e.preventDefault()
         window.alert("Saved")
         document.getElementById("spending-form").reset()

@@ -11,8 +11,8 @@ import { useState, useEffect } from 'react'
 export default function BudgetBase() {
 
   const { user } = Auth.useUser()
-  const [events, setEvents] = useState([])
-  const [spendings, setSpendings] = useState([])
+  const [events, setEvents] = useState([{}])
+  const [spendings, setSpendings] = useState([{}])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
